@@ -5,12 +5,12 @@ from flask import Flask, request, Response
 from health_insurance.HealthInsurance import HealthInsurance
 
 #loading model
-path = '/opt/render/project/src/model/'
-model = pickle.load( open( path + 'liner_model.pkl', 'rb' ) )
+with open('model/linear_model.pkl', 'rb') as file:
+  model = pickle.load(file)
 
 app = Flask( __name__ )
 
-@app.route( '/predict', methods=['POST'] )
+@app.route( '/health_insurance/predict', methods=['POST'] )
 
 def health_insurance_predict():
     
