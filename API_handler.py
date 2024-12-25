@@ -10,10 +10,14 @@ with open('model/linear_model.pkl', 'rb') as file:
 
 app = Flask( __name__ )
 
-@app.route( '/', methods=['POST'] )
+@app.route( '/predict', methods=['POST'] )
+
 def health_insurance_predict():
+    
     test_json = request.get_json()
+    
     if test_json: # there is data
+       
         if isinstance( test_json, dict ): # unique example
             test_raw = pd.DataFrame( test_json, index=[0])
         else:
@@ -34,6 +38,7 @@ def health_insurance_predict():
         return df_response
 
     else:
+      
       return Response( '{}', status=200, mimetype='application/json' )
 
 
