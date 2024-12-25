@@ -1,7 +1,7 @@
 import os
 import pickle
 import pandas as pd
-from flask import Flask, request, Response
+from flask import Flask, requests, Response
 from health_insurance.HealthInsurance import HealthInsurance
 
 #loading model
@@ -12,7 +12,7 @@ app = Flask( __name__ )
 
 @app.route( '/predict', methods=['POST'] )
 def health_insurance_predict():
-    test_json = request.get_json()
+    test_json = requests.get_json()
     if test_json: # there is data
         if isinstance( test_json, dict ): # unique example
             test_raw = pd.DataFrame( test_json, index=[0])
