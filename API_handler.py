@@ -10,7 +10,7 @@ with open('model/linear_model.pkl', 'rb') as file:
 
 app = Flask( __name__ )
 
-@app.route( '/health_insurance/predict', methods=['POST'] )
+@app.route( '/', methods=['POST'] )
 def health_insurance_predict():
     test_json = request.get_json()
     if test_json: # there is data
