@@ -5,8 +5,8 @@ from flask import Flask, request, Response
 from health_insurance.HealthInsurance import HealthInsurance
 
 #loading model
-with open('model/linear_model.pkl', 'rb') as file:
-  model = pickle.load(file)
+path = '/opt/render/project/src/model/'
+model = pickle.load( open( path + 'liner_model.pkl', 'rb' ) )
 
 app = Flask( __name__ )
 
