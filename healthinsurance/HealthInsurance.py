@@ -12,7 +12,7 @@ class HealthInsurance( object ):
     self.age_scaler = pickle.load(open(os.path.join(self.home_path, 'age.pkl'), 'rb'))
     self.vintage_scaler = pickle.load(open(os.path.join(self.home_path, 'vintage.pkl'), 'rb'))
 
-  def clean_data (df1):
+  def clean_data (self, df1):
 
     old_columns = ['id', 'Gender', 'Age', 'Driving_License', 'Region_Code',
                 'Previously_Insured', 'Vehicle_Age', 'Vehicle_Damage', 'Annual_Premium',
