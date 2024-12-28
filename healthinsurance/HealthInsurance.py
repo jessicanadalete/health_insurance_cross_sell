@@ -6,7 +6,7 @@ import pandas as pd
 
 class HealthInsurance( object ):
   def __init__( self ):
-    self.home_path = '/opt/render/project/src/parameter/'
+    self.home_path = 'parameter/'
     self.annual_premium_standard              = pickle.load( open( self.home_path + 'annual_premium.pkl', 'rb') )
     self.age_scaler                           = pickle.load( open( self.home_path + 'age.pkl', 'rb') )
     self.vintage_scaler                       = pickle.load( open( self.home_path + 'vintage.pkl', 'rb') )
@@ -27,7 +27,7 @@ class HealthInsurance( object ):
   def data_preparation (self, df5):
 
     #standardization
-    df5['annual_premium'] = self.stand_annual_premium.fit_transform(df5[['annual_premium']].values)
+    df5['annual_premium'] = self.stand_annual_premium_standard.fit_transform(df5[['annual_premium']].values)
 
     #recasling
     df5['age'] = self.age_scaler.fit_transform(df5[['age']].values)
