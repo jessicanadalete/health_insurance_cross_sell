@@ -10,7 +10,7 @@ with open('model/linear_model.pkl', 'rb') as file:
 
 app = Flask( __name__ )
 
-@app.route( '/predict', methods=['POST'] )
+@app.route( '/healthinsurance/predict', methods=['POST'] )
 
 def healthinsurance_predict():
     
@@ -38,8 +38,7 @@ def healthinsurance_predict():
         return df_response
 
     else:
-      
-      return Response( '{}', status=200, mimetype='application/json' )
+        return Response( '{}', status=200, mimetype='application/json' )
 
 
 if __name__ == '__main__':
