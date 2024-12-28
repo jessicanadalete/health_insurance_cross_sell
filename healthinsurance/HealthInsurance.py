@@ -7,19 +7,19 @@ import pandas as pd
 
 class HealthInsurance( object ):
   def __init__( self ):
-    self.home_path = os.path.join(os.getcwd(), 'parameter/')
-    self.annual_premium_standard              = pickle.load( open( self.home_path + 'annual_premium.pkl', 'rb') )
-    self.age_scaler                           = pickle.load( open( self.home_path + 'age.pkl', 'rb') )
-    self.vintage_scaler                       = pickle.load( open( self.home_path + 'vintage.pkl', 'rb') )
+    self.home_path = os.path.join(os.getcwd(), 'parameter')
+    self.annual_premium_standard = pickle.load(open(os.path.join(self.home_path, 'annual_premium.pkl'), 'rb'))
+    self.age_scaler = pickle.load(open(os.path.join(self.home_path, 'age.pkl'), 'rb'))
+    self.vintage_scaler = pickle.load(open(os.path.join(self.home_path, 'vintage.pkl'), 'rb'))
 
-  def clean_data (self, df1):
+  def clean_data (df1):
 
     old_columns = ['id', 'Gender', 'Age', 'Driving_License', 'Region_Code',
                 'Previously_Insured', 'Vehicle_Age', 'Vehicle_Damage', 'Annual_Premium',
                 'Policy_Sales_Channel', 'Vintage', 'Response']
 
     snakecase = lambda x: inflection.underscore(x)
-    new_columns = list(map(self.snakecase, old_columns))
+    new_columns = list(map(snakecase, old_columns))
 
     df1.columns = new_columns
 
@@ -28,7 +28,7 @@ class HealthInsurance( object ):
   def data_preparation (self, df5):
 
     #standardization
-    df5['annual_premium'] = self.stand_annual_premium_standard.fit_transform(df5[['annual_premium']].values)
+    df5['annual_premium'] = self.annual_premium_standard.fit_transform(df5[['annual_premium']].values)
 
     #recasling
     df5['age'] = self.age_scaler.fit_transform(df5[['age']].values)

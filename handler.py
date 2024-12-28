@@ -4,44 +4,47 @@ import pandas as pd
 from flask import Flask, request, Response
 from healthinsurance.HealthInsurance import HealthInsurance
 
-#loading model
-model_path = os.path.join(os.getcwd(), 'model/linear_model.pkl')
+# Loading model
+model_path = os.path.join(os.path.dirname(__file__), 'model', 'linear_model.pkl')
 with open(model_path, 'rb') as file:
-  model = pickle.load(file)
+    model = pickle.load(file)
 
-app = Flask( __name__ )
+# Instantiate HealthInsurance Class
+pipeline = HealthInsurance()
 
-@app.route( '/healthinsurance/predict', methods=['POST'] )
+app = Flask(__name__)
 
+@app.route('/healthinsurance/predict', methods=['POST'])
 def healthinsurance_predict():
     
     test_json = request.get_json()
     
-    if test_json: # there is data
+    if test_json:  # there is data
        
-        if isinstance( test_json, dict ): # unique example
-            test_raw = pd.DataFrame( test_json, index=[0])
+        if isinstance(test_json, dict):  # unique example
+            test_raw = pd.DataFrame(test_json, index=[0])
         else:
-            test_raw = pd.DataFrame( test_json, columns=test_json[0].keys()) #multiple examples
+            test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())  # multiple examples
 
-        #instantiate HealthInsurance Class
-        pipeline = HealthInsurance()
+        try:
+            # Data cleaning
+            df1 = pipeline.clean_data(test_raw)
 
-        #data cleaning
-        df1 = pipeline.clean_data( test_raw )
+            # Feature engineering
+            df2 = pipeline.data_preparation(df1)
 
-        #feature enginnering
-        df2 = pipeline.data_preparation( df1 )
+            # Get prediction
+            df_response = pipeline.get_prediction(model, test_raw, df2)
 
-        #prediction
-        df_response = pipeline.get_prediction( model, test_raw, df2 )
-
-        return df_response
+            # Return the response
+            return Response(df_response, status=200, mimetype='application/json')
+        
+        except Exception as e:
+            return Response(f"Error: {str(e)}", status=500, mimetype='application/json')
 
     else:
-        return Response( '{}', status=200, mimetype='application/json' )
-
+        return Response('{}', status=200, mimetype='application/json')
 
 if __name__ == '__main__':
     port = os.environ.get('PORT', 5000)
-    app.run( host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=True)
