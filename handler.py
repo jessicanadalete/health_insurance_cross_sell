@@ -10,7 +10,7 @@ with open('model/linear_model.pkl', 'rb') as file:
 
 app = Flask( __name__ )
 
-@app.route( '/predict', methods=['POST'] )
+@app.route( '/healthinsurance/predict', methods=['POST'] )
 
 def healthinsurance_predict():
     
@@ -43,4 +43,5 @@ def healthinsurance_predict():
 
 
 if __name__ == '__main__':
-    app.run( host='0.0.0.0', debug=True)
+    port = os.environ.get('PORT', 5000)
+    app.run( host='0.0.0.0', port=port, debug=True)
