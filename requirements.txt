@@ -1,6 +1,6 @@
 Flask==3.1.0
 inflection==0.5.1
-numpy==12.2.0
+numpy==2.2.0
 pandas==2.2.3
 scikit-learn==1.6.0
 scipy==1.14.1
