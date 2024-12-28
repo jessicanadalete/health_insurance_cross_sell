@@ -2,7 +2,7 @@ import os
 import pickle
 import pandas as pd
 from flask import Flask, request, Response
-from health_insurance.HealthInsurance import HealthInsurance
+from healthinsurance.HealthInsurance import HealthInsurance
 
 #loading model
 with open('model/linear_model.pkl', 'rb') as file:
@@ -10,7 +10,7 @@ with open('model/linear_model.pkl', 'rb') as file:
 
 app = Flask( __name__ )
 
-@app.route( '/health_insurance/predict', methods=['POST'] )
+@app.route( '/healthinsurance/predict', methods=['POST'] )
 
 def health_insurance_predict():
     
