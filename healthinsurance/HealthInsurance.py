@@ -18,7 +18,7 @@ class HealthInsurance( object ):
                 'Policy_Sales_Channel', 'Vintage', 'Response']
 
     snakecase = lambda x: inflection.underscore(x)
-    new_columns = list(map(self.snakecase, old_columns))
+    new_columns = list(map(snakecase, old_columns))
 
     df1.columns = new_columns
 
@@ -27,11 +27,11 @@ class HealthInsurance( object ):
   def data_preparation (self, df5):
 
     #standardization
-    df5['annual_premium'] = self.stand_annual_premium.fit_transform(df5[['annual_premium']].values)
+    df5['annual_premium'] = self.stand_annual_premium.transform(df5[['annual_premium']].values)
 
     #recasling
     df5['age'] = self.age_scaler.fit_transform(df5[['age']].values)
-    df5['vintage'] = self.vintage_scaler.fit_transform(df5[['vintage']].values)
+    df5['vintage'] = self.vintage_scaler.transform(df5[['vintage']].values)
 
     #vehicle_damage (Label encoding)
     df5['vehicle_damage'] = df5['vehicle_damage'].apply(lambda x: 1 if x == "Yes" else 0)
