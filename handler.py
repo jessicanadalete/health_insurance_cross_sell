@@ -2,7 +2,6 @@ import os
 import pickle
 import pandas as pd
 from flask import Flask, request, Response
-from flask_cors import CORS
 from healthinsurance.HealthInsurance import HealthInsurance
 
 # Loading model
@@ -15,9 +14,13 @@ pipeline = HealthInsurance()
 
 app = Flask(__name__)
 
+<<<<<<< HEAD
 CORS(app) # Enable CORS for all routes
 
 @app.route('/predict', methods=['POST'])
+=======
+@app.route('/healthinsurance/predict', methods=['POST'])
+>>>>>>> parent of 87df991 (Adding CORS)
 def healthinsurance_predict():
     
     test_json = request.get_json()
