@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 CORS(app) # Enable CORS for all routes
 
-@app.route('/healthinsurance/predict', methods=['POST'])
+@app.route('/predict', methods=['POST'])
 def healthinsurance_predict():
     
     test_json = request.get_json()
