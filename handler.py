@@ -29,24 +29,19 @@ def healthinsurance_predict():
         else:
             test_raw = pd.DataFrame(test_json, columns=test_json[0].keys())  # multiple examples
 
-        try:
-            # Data cleaning
-            df1 = pipeline.clean_data(test_raw)
+        # Data cleaning
+        df1 = pipeline.clean_data(test_raw)
 
-            # Feature engineering
-            df2 = pipeline.data_preparation(df1)
+        # Feature engineering
+        df2 = pipeline.data_preparation(df1)
 
-            # Get prediction
-            df_response = pipeline.get_prediction(model, test_raw, df2)
+        # Get prediction
+        df_response = pipeline.get_prediction(model, test_raw, df2)
 
-            # Return the response
-            return Response(df_response, status=200, mimetype='application/json')
-        
-        except Exception as e:
-            return Response(f"Error: {str(e)}", status=500, mimetype='application/json')
-
+        return df_response
+    
     else:
-        return Response('{}', status=200, mimetype='application/json')
+        return Response( '{}', status=200, mimetype='application/json' )
 
 if __name__ == '__main__':
     port = os.environ.get('PORT', 5000)
