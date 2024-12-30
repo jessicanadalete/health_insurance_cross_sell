@@ -16,11 +16,13 @@ pipeline = HealthInsurance()
 app = Flask(__name__)
 
 CORS(app) # Enable CORS for all routes
+
 # Root route
 @app.route('/', methods=['GET'])
 def home():
     return Response('Health Insurance Prediction API is up and running!', status=200, mimetype='text/plain')
 
+# Prediction route
 @app.route('/healthinsurance/predict', methods=['POST'])
 def healthinsurance_predict():
     

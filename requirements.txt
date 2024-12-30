@@ -1,9 +1,9 @@
 Flask==3.1.0
-Flask-Cors==5.0.0
-inflection==0.5.1
 numpy==2.2.0
 pandas==2.2.3
-scikit-learn==1.6.0
 scipy==1.14.1
-sklearn-pandas==2.2.0
 gunicorn==21.2.0
+Flask-Cors==5.0.0
+inflection==0.5.1
+scikit-learn==1.6.0
+sklearn-pandas==2.2.0
