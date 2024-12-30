@@ -1,1 +1,1 @@
-web: gunicorn health-insurance-API:app
+web: gunicorn handler:app
