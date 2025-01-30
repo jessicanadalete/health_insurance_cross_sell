@@ -1,7 +1,7 @@
 # [EN] Health Insurance Cross-Sell Prediction
 
 ## **🛒 Problem Statement**
-Our client is an insurance company that provides health insurance to its customers. They need a predictive model to determine whether its existing policyholders will likely purchase vehicle insurance. This will allow the company to optimize its communication strategy and allocate resources efficiently to target the most promising leads.
+Our client is an insurance company that provides health insurance to its customers. They need a predictive model to determine whether their existing policyholders will likely purchase vehicle insurance. This will allow the company to optimize its communication strategy and allocate resources efficiently to target the most promising leads.
 
 ## **📊 Business Objective**
 The objective is to build a model that calculates the customer's propensity to purchase vehicle insurance. This will enable the company to prioritize outreach efforts to the customers most likely to convert, minimizing costs while maximizing sales.
@@ -89,12 +89,12 @@ Link: https://docs.google.com/spreadsheets/d/1DvjzDxXtgxd19dXQTESxDCEhJqUtwvNkui
 |-- README.md          # Project documentation
 ```
 
-## **🛠 Technologies Used**
+## **🛠 Technologies**
 - **Python** (pandas, numpy, sklearn, seaborn, matplotlib)
 - **Machine Learning** (Scikit-Learn, XGBoost, LightGBM)
 - **Data Visualization** (Seaborn, Matplotlib)
 
-## **👥 Contributors**
+## **👥 Contributor**
 Jessica Nadalete - Data Science & Machine Learning Engineer
 
 ## **📬 Contact**
