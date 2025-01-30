@@ -1,10 +1,10 @@
-**# [EN] Health Insurance Cross-Sell Prediction**
+# [EN] Health Insurance Cross-Sell Prediction
 
 ## **🛒 Problem Statement**
-Our client is an insurance company that provides health insurance to its customers. They need a predictive model to determine whether their existing policyholders are likely to purchase vehicle insurance. This will allow the company to optimize its communication strategy and allocate resources efficiently to target the most promising leads.
+Our client is an insurance company that provides health insurance to its customers. They need a predictive model to determine whether its existing policyholders will likely purchase vehicle insurance. This will allow the company to optimize its communication strategy and allocate resources efficiently to target the most promising leads.
 
 ## **📊 Business Objective**
-The objective is to build a model that calculates the propensity of customers to purchase vehicle insurance. This will enable the company to prioritize outreach efforts to the customers most likely to convert, minimizing costs while maximizing sales.
+The objective is to build a model that calculates the customer's propensity to purchase vehicle insurance. This will enable the company to prioritize outreach efforts to the customers most likely to convert, minimizing costs while maximizing sales.
 
 ## **📂 Dataset**
 The dataset consists of customer demographic information, vehicle details, and policy-related features:
@@ -32,7 +32,7 @@ df1 = df_raw.copy()
 ### **3. Exploratory Data Analysis (EDA)**
 - Analyzed response variable distribution across different features
 - Visualized relationships using histograms, box plots, and bar charts
-- Identified key patterns in customer behavior
+- Identified key patterns in customer behaviour
 
 ### **4. Feature Engineering**
 - Created new features where applicable
@@ -83,9 +83,9 @@ Link: https://docs.google.com/spreadsheets/d/1DvjzDxXtgxd19dXQTESxDCEhJqUtwvNkui
 ## **📂 Repository Structure**
 ```
 |-- data/              # Raw and processed data
-|-- notebooks/         # Jupyter notebooks for EDA and modeling
+|-- notebooks/         # Jupyter notebooks for EDA and modelling
 |-- models/            # Trained models and serialized objects
-|-- src/               # Scripts for data processing and modeling
+|-- src/               # Scripts for data processing and modelling
 |-- README.md          # Project documentation
 ```
 
